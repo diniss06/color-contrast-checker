@@ -15,9 +15,9 @@ export const getOverallStars = (
     case "Good":
       return "★★★";
     case "Poor":
-      return "★";
+      return "★★";
     case "Very Poor":
-      return "";
+      return "★";
     default:
       return "";
   }

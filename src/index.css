@@ -21,15 +21,38 @@
   font-family: "Poppins", sans-serif;
 }
 
-.header{
-  background-color: var(--header-color);
-  color: rgb(0, 0, 0);
-  margin-top: 108px;
-  margin-left: -32.3%;
-  margin-right: -32.3%;
-  padding: 20px 0; /* Espaçamento vertical */
-  text-align: left; /* Centraliza o conteúdo */
-  position: static;  
+.header {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 70%;
+  height: 60px;
+  width: 100%;
+  position: relative;
+}
+
+.sign-btn{
+  border-radius: 8px;
+  text-align: center;
+  font-size: 14px;
+  padding: 0 12px;
+  height: 36px;
+}
+
+.img{
+  width: 90px;
+  margin-top: 10px;  
+}
+.sign-btn:hover{
+  background-color: #0c416f;
+  color: #ffffff;
+}
+
+.border {
+  border: rgba(0, 0, 0, 0.5) 1px solid; /* Ajuste o valor de 0.3 para alterar a opacidade */
 }
 
 body {
@@ -58,15 +81,39 @@ button {
 
 .title {
   font-weight: 800;
-  font-size: 2.5rem;
+  font-size: 3rem;
+  margin-top: 150px;
+  padding: 20px;
 }
 
 .subtitle {
   color: var(--subtitle-color);
   font-weight: 400;
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   padding: 10px 0 100px;
+  margin-bottom: -40px;
 }
+
+.number-choice{
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: #363636;
+  margin-left: 31%;
+}
+
+.number{
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-left: 46%;
+  border-radius: 10px;
+}
+
+.warning{
+  margin-left: 31%;
+  padding-bottom: 5px;
+}
+
 .title-2{
   color: #000000;
   font-weight: 700;
@@ -74,6 +121,12 @@ button {
   text-align: left;
   margin-left: 10px;
   margin-bottom: 1%;
+}
+
+.title-3{
+  font-size: 1.3rem;
+  margin-left: 10px;
+  margin-top: 10px;
 }
 
 .text{ 
@@ -84,6 +137,17 @@ button {
     margin-left: 20px;
     color: var(--text-color);
 }
+
+.text-4{ 
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--text-color);
+  width: 80%;
+  margin-left: 20px;
+  color: var(--text-color);
+  padding-bottom: 
+  20px;
+}
  
 /*
 .container-2 {
@@ -93,10 +157,95 @@ button {
   justify-content: center;
  }*/ 
 
-.footer{
-  margin-top: 3%;
+.li{
   margin-left: 20px;
-  margin-bottom: 5px;
+}
+
+
+.btn-primary
+ {
+  background-color: transparent;
+  font-size: 1rem;
+  margin-top: 10px;
+  margin-left: -10px;
+  color: #000000;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  padding-left: 0%;
+;}
+.btn-primary:hover,.btn-primary-2:hover{
+  color: #0011ff;
+}
+
+.btn-primary-2{
+  background-color: transparent;
+  font-size: 1rem;
+  margin-top: 10px;
+  margin-left: -10px;
+  color: #000000;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  padding-left: 0%;
+  padding-bottom: 20px;
+}
+
+/*.btn-primary-3{
+  background-color: transparent;
+  font-size: 1rem;
+  margin-top: 10px;
+  margin-left: 27px;
+  margin-bottom: 10px;
+  color: #000000;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 5px;
+}*/
+
+.btn{
+  background-color: transparent;
+  font-size: 1rem;
+  margin-top: 10px;
+  margin-left: 24px;
+  color: #000000;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  padding-left: 10px;
+}
+
+.border-2{
+  border: rgb(0, 0, 0) 0.01px solid;
+}
+
+.icon{
+  width: 30px;
+  align-items: center;
+  padding-bottom: 30px;
+  margin-left: -5px;
+}
+
+.icon-2{
+  width: 30px;
+  align-items: center;
+  padding-bottom: 30px;
+  margin-left: -5px;
+}
+
+.icon-3{
+  width: 30px;
+  align-items: center;
+  padding-bottom: 30px;
+  margin-left: -5px;
+}
+
+ .footer {
+  color: #000000;
+  padding: 20px;
+  text-align: left;
+  font-size: 0.8rem;
 }
 
 .card {
@@ -108,4 +257,26 @@ button {
   grid-template-columns: 1fr 1fr;
   justify-content: center;
   margin: 0 auto; /* Adicionado para centralizar o card */
+}
+
+.dark-theme {
+  background-color: #003461;
+  color: #ffffff;
+}
+
+.light-theme {
+  background-color: #ffffff;
+  color: #003461;
+}
+
+.theme-toggle-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px;
+  background-color: #ffffff;
+  color: #816565;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
