@@ -246,6 +246,10 @@ button {
   margin-left: -5px;
 }
 
+.border-2{
+  border: rgba(0, 0, 0, 0.5) 1px solid; /* Ajuste o valor de 0.3 para alterar a opacidade */
+}
+
  .footer {
   color: #000000;
   padding: 20px;

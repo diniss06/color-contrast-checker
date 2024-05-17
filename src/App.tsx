@@ -33,21 +33,18 @@ export default function App() {
   };
 
   // Array de cores dos textos e dos backgrounds dos cards
-  const textColors = new Array(7).fill(textColor);
-
-  console.log( textColors[0])
-
-  const backgroundColors = new Array(7).fill(backgroundColor);
+  const textColors = new Array(8).fill(textColor);
+  const backgroundColors = new Array(8).fill(backgroundColor);
 
   // Funções para manipular as cores dos cards
   const handleTextColorChange = (index: number, color: string) => {
-    const updatedTextColor = textColors ;
+    const updatedTextColor = [...textColors];
     updatedTextColor[index] = color;
-    setTextColor(updatedTextColor[0] );
+    setTextColor(updatedTextColor[0]);
   };
 
   const handleBackgroundColorChange = (index: number, color: string) => {
-    const updatedBackgroundColor = backgroundColors ;
+    const updatedBackgroundColor = [...backgroundColors];
     updatedBackgroundColor[index] = color;
     setBackgroundColor(updatedBackgroundColor[0]);
   };
@@ -133,7 +130,7 @@ export default function App() {
         </a>
       </li>
 
-      <div className="border"></div>
+      <div className="border-2"></div>
 
       <footer className="footer">
         <p className="p">&copy; AOD by <b>Dinis Gonçalves</b></p>
