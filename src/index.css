@@ -22,24 +22,27 @@
 }
 
 .header {
+  /* Estilos do cabeçalho */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   background-color: #ffffff;
   color: #000000;
   padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 70%;
   height: 60px;
-  width: 100%;
-  position: relative;
+  z-index: 999; /* Para garantir que o cabeçalho esteja sempre na frente */
 }
-
 .sign-btn{
   border-radius: 8px;
   text-align: center;
   font-size: 14px;
   padding: 0 12px;
   height: 36px;
+  background-color: #ffffff;
 }
 
 .img{
@@ -82,8 +85,10 @@ button {
 .title {
   font-weight: 800;
   font-size: 3rem;
-  margin-top: 150px;
+  margin-top: 550px;
   padding: 20px;
+  justify-content: space-between;
+
 }
 
 .subtitle {
@@ -260,18 +265,18 @@ button {
 }
 
 .dark-theme {
-  background-color: #003461;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #000000;
 }
 
 .light-theme {
   background-color: #ffffff;
-  color: #003461;
+  color: #000000;
 }
 
 .theme-toggle-btn {
   position: fixed;
-  top: 20px;
+  top: 70px;
   right: 20px;
   padding: 10px;
   background-color: #ffffff;
