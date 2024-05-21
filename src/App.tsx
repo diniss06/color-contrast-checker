@@ -3,67 +3,55 @@ import './index.css'
 import { CardRightSide, CardLeftSide } from "./components";
 
 export default function App() {
-  const [textColor, setTextColor] = useState("#FFFFFF");
-  const [backgroundColor, setBackgroundColor] = useState("#003461");
   const [theme, setTheme] = useState("dark");
   const [showWarning, setShowWarning] = useState(false);
-  const [numCards, setNumCards] = useState(0); // Inicialmente, mostra apenas 1 card
+  const [numCards, setNumCards] = useState(0);
+  const [cardColors, setCardColors] = useState([{ textColor: "#FFFFFF", backgroundColor: "#003461" }]);
 
   const toggleTheme = () => {
     if (theme === "dark") {
-      setTextColor("#003461");
-      setBackgroundColor("#FFFFFF");
       setTheme("light");
     } else {
-      setTextColor("#FFFFFF");
-      setBackgroundColor("#003461");
       setTheme("dark");
     }
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
-    if (inputValue.trim() !== '') { // Verifica se o valor não está vazio
-      setNumCards(parseInt(inputValue) <= 10 ? parseInt(inputValue) : 10);
-      setShowWarning(parseInt(inputValue) > 10);
+    if (inputValue.trim() !== '') {
+      const parsedValue = parseInt(inputValue);
+      const newNumCards = parsedValue <= 10 ? parsedValue : 10;
+      setNumCards(newNumCards);
+      setShowWarning(parsedValue > 10);
+      
+      // Ajusta o estado de cardColors para corresponder ao número de cards
+      if (newNumCards > cardColors.length) {
+        setCardColors([
+          ...cardColors,
+          ...Array(newNumCards - cardColors.length).fill({ textColor: "#FFFFFF", backgroundColor: "#003461" })
+        ]);
+      } else {
+        setCardColors(cardColors.slice(0, newNumCards));
+      }
     } else {
-      setNumCards(0); // Define o número de cards como 0 se o input estiver vazio
-      setShowWarning(false); // Oculta qualquer aviso de advertência
+      setNumCards(0);
+      setShowWarning(false);
     }
   };
 
-  // Array de cores dos textos e dos backgrounds dos cards
-  const textColors = new Array(8).fill(textColor);
-  const backgroundColors = new Array(8).fill(backgroundColor);
-
-  // Funções para manipular as cores dos cards
   const handleTextColorChange = (index: number, color: string) => {
-    const updatedTextColor = [...textColors];
-    updatedTextColor[index] = color;
-    setTextColor(updatedTextColor[0]);
+    const updatedCardColors = cardColors.map((card, i) =>
+      i === index ? { ...card, textColor: color } : card
+    );
+    setCardColors(updatedCardColors);
   };
 
   const handleBackgroundColorChange = (index: number, color: string) => {
-    const updatedBackgroundColor = [...backgroundColors];
-    updatedBackgroundColor[index] = color;
-    setBackgroundColor(updatedBackgroundColor[0]);
+    const updatedCardColors = cardColors.map((card, i) =>
+      i === index ? { ...card, backgroundColor: color } : card
+    );
+    setCardColors(updatedCardColors);
   };
-
-  // Renderização dos cards pré-definidos
-  const predefinedCards = [...Array(7)].map((_, index) => (
-    <div className="card" key={index}>
-      <CardLeftSide
-        textColor={textColors[index]}
-        setTextColor={(color) => handleTextColorChange(index, color)}
-        backgroundColor={backgroundColors[index]}
-        setBackgroundColor={(color) => handleBackgroundColorChange(index, color)}
-      />
-      <CardRightSide
-        textColor={textColors[index]}
-        backgroundColor={backgroundColors[index]}
-      />
-    </div>
-  ));
 
   const downloadPDF = () => {
     const pdfUrl = 'public/WCAG 2.0.pdf';
@@ -107,7 +95,20 @@ export default function App() {
 
       {/* Renderização dos cards */}
       <div className="card-container">
-        {predefinedCards.slice(0, numCards)}
+        {cardColors.slice(0, numCards).map((card, index) => (
+          <div className="card" key={index}>
+            <CardLeftSide
+              textColor={card.textColor}
+              setTextColor={(color) => handleTextColorChange(index, color)}
+              backgroundColor={card.backgroundColor}
+              setBackgroundColor={(color) => handleBackgroundColorChange(index, color)}
+            />
+            <CardRightSide
+              textColor={card.textColor}
+              backgroundColor={card.backgroundColor}
+            />
+          </div>
+        ))}
       </div>
 
       <h1 className="title-2">O que é a AOD? </h1>
@@ -149,7 +150,6 @@ export default function App() {
       <button className="theme-toggle-btn" onClick={toggleTheme}>
         {theme === "dark" ? "Light Theme" : "Dark Theme"}
       </button>
-
     </div>
   );
 }
