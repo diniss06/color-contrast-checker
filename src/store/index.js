@@ -1,6 +1,6 @@
 // store/index.js
 import { configureStore } from '@reduxjs/toolkit';
-import cardReducer from './cardSlice';
+import cardReducer from './cardSlice'; // Certifique-se de que o caminho está correto
 
 const store = configureStore({
   reducer: {
@@ -9,4 +9,3 @@ const store = configureStore({
 });
 
 export default store;
-

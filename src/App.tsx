@@ -66,9 +66,12 @@ export default function App() {
   return (
     <div className={`container ${theme === "dark" ? "dark-theme" : "light-theme"}`}>
       <header className="header">
-        <a href="index2.html">
+        
+        {/*<a href="index2.html">
           <button className="sign-btn">Sign up</button>
         </a>
+        */}
+
         <img className="img" src="public/logo1.png" alt="" />
       </header>
 
@@ -147,9 +150,10 @@ export default function App() {
 
       <button className="btn" onClick={downloadPDF}> <img className="icon-3" src="public/PDF-Icon.png" alt="" /> </button>
 
-      <button className="theme-toggle-btn" onClick={toggleTheme}>
+      {/*<button className="theme-toggle-btn" onClick={toggleTheme}>
         {theme === "dark" ? "Light Theme" : "Dark Theme"}
-      </button>
+      </button>*/}
+
     </div>
   );
 }
