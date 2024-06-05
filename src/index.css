@@ -264,4 +264,21 @@ button {
   border-radius: 5px;
   cursor: pointer;
 }
-  
+
+.btn-contrast{
+  color:#000000;
+  background-color: transparent;
+  border: none;
+  height: 25px;
+  width: 200px;
+  font-size: 17px;
+}
+
+.btn-contrast:hover{
+  color: #003461;
+  border-radius: 10px;
+}
+
+.contrast-average{
+  margin-left: 20px;
+}

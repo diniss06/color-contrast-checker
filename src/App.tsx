@@ -7,12 +7,20 @@ export default function App() {
   const [showWarning, setShowWarning] = useState(false);
   const [numCards, setNumCards] = useState(0);
   const [cardColors, setCardColors] = useState([{ textColor: "#FFFFFF", backgroundColor: "#003461" }]);
+  const [averageContrast, setAverageContrast] = useState(0); // Estado para armazenar a média
+
+  // Função para calcular a média dos contraste dos cards
+  const calculateAverageContrast = () => {
+    const sumOfContrasts = cardColors.reduce((acc, card) => acc + parseInt(card.textColor.replace("#", ""), 16), 0);
+    const average = sumOfContrasts / (numCards * 256); // Multiplicando por 256 porque cada pixel tem 256^3 possibilidades de cores
+    setAverageContrast(Math.round(average)); // Arredonda para o número inteiro mais próximo
+  };
 
   const toggleTheme = () => {
     if (theme === "dark") {
       setTheme("light");
     } else {
-      setTheme("dark");
+      setTheme("dark");   
     }
   };
 
@@ -67,6 +75,9 @@ export default function App() {
     <div className={`container ${theme === "dark" ? "dark-theme" : "light-theme"}`}>
       <header className="header">
         
+        
+
+        
         {/*<a href="index2.html">
           <button className="sign-btn">Sign up</button>
         </a>
@@ -113,6 +124,18 @@ export default function App() {
           </div>
         ))}
       </div>
+
+      {/* Botão para calcular e exibir a média do contraste */}
+      <button className="btn-contrast" onClick={calculateAverageContrast}>
+        Calcular Média
+      </button>
+
+      {/* Exibição da média do contraste */}
+      {averageContrast > 0 && (
+        <div className="contrast-average">
+          <strong>Média do Contraste:</strong> {averageContrast}
+        </div>
+      )}
 
       <h1 className="title-2">O que é a AOD? </h1>
       <h2 className="text"> O Design Orientado para Acessibilidade foca-se em criar produtos, serviços ou ambientes</h2>
