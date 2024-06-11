@@ -1,27 +1,23 @@
-import { useState, ChangeEvent } from "react";
-import './index.css'
+import React, { useState, ChangeEvent } from "react";
+import './index.css';
 import { CardRightSide, CardLeftSide } from "./components";
+import { calculateContrast } from "./utilities/calculateContrast";
 
 export default function App() {
   const [theme, setTheme] = useState("dark");
   const [showWarning, setShowWarning] = useState(false);
   const [numCards, setNumCards] = useState(0);
   const [cardColors, setCardColors] = useState([{ textColor: "#FFFFFF", backgroundColor: "#003461" }]);
-  const [averageContrast, setAverageContrast] = useState(0); // Estado para armazenar a média
+  const [averageContrast, setAverageContrast] = useState(0);
 
-  // Função para calcular a média dos contraste dos cards
   const calculateAverageContrast = () => {
-    const sumOfContrasts = cardColors.reduce((acc, card) => acc + parseInt(card.textColor.replace("#", ""), 16), 0);
-    const average = sumOfContrasts / (numCards * 256); // Multiplicando por 256 porque cada pixel tem 256^3 possibilidades de cores
-    setAverageContrast(Math.round(average)); // Arredonda para o número inteiro mais próximo
+    const sumOfContrasts = cardColors.reduce((acc, card) => acc + calculateContrast(card.textColor, card.backgroundColor), 0);
+    const average = numCards > 0 ? sumOfContrasts / numCards : 0;
+    setAverageContrast(average);
   };
 
   const toggleTheme = () => {
-    if (theme === "dark") {
-      setTheme("light");
-    } else {
-      setTheme("dark");   
-    }
+    setTheme(theme === "dark" ? "light" : "dark");
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -32,7 +28,6 @@ export default function App() {
       setNumCards(newNumCards);
       setShowWarning(parsedValue > 10);
       
-      // Ajusta o estado de cardColors para corresponder ao número de cards
       if (newNumCards > cardColors.length) {
         setCardColors([
           ...cardColors,
@@ -74,15 +69,6 @@ export default function App() {
   return (
     <div className={`container ${theme === "dark" ? "dark-theme" : "light-theme"}`}>
       <header className="header">
-        
-        
-
-        
-        {/*<a href="index2.html">
-          <button className="sign-btn">Sign up</button>
-        </a>
-        */}
-
         <img className="img" src="public/logo1.png" alt="" />
       </header>
 
@@ -107,7 +93,6 @@ export default function App() {
         )}
       </div>
 
-      {/* Renderização dos cards */}
       <div className="card-container">
         {cardColors.slice(0, numCards).map((card, index) => (
           <div className="card" key={index}>
@@ -125,15 +110,13 @@ export default function App() {
         ))}
       </div>
 
-      {/* Botão para calcular e exibir a média do contraste */}
       <button className="btn-contrast" onClick={calculateAverageContrast}>
         Calcular Média
       </button>
 
-      {/* Exibição da média do contraste */}
       {averageContrast > 0 && (
         <div className="contrast-average">
-          <strong>Média do Contraste:</strong> {averageContrast}
+          <strong>Média do Contraste:</strong> {averageContrast.toFixed(2)}
         </div>
       )}
 
@@ -172,10 +155,6 @@ export default function App() {
       </a>
 
       <button className="btn" onClick={downloadPDF}> <img className="icon-3" src="public/PDF-Icon.png" alt="" /> </button>
-
-      {/*<button className="theme-toggle-btn" onClick={toggleTheme}>
-        {theme === "dark" ? "Light Theme" : "Dark Theme"}
-      </button>*/}
 
     </div>
   );
