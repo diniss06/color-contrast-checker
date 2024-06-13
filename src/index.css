@@ -272,13 +272,15 @@ button {
   height: 25px;
   width: 200px;
   font-size: 17px;
+  margin-left: -25px;
 }
 
 .btn-contrast:hover{
-  color: #003461;
+  color: #001d36;
   border-radius: 10px;
 }
 
 .contrast-average{
   margin-left: 20px;
 }
+

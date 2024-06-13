@@ -18,8 +18,7 @@ export default function App() {
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
-  };
-
+  }; 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
     if (inputValue.trim() !== '') {
