@@ -1,10 +1,10 @@
-import React, { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent } from "react";
 import './index.css';
 import { CardRightSide, CardLeftSide } from "./components";
 import { calculateContrast } from "./utilities/calculateContrast";
 
 export default function App() {
-  const [theme, setTheme] = useState("dark");
+  const [theme] = useState("dark");
   const [showWarning, setShowWarning] = useState(false);
   const [numCards, setNumCards] = useState(0);
   const [cardColors, setCardColors] = useState([{ textColor: "#FFFFFF", backgroundColor: "#003461" }]);
@@ -16,9 +16,10 @@ export default function App() {
     setAverageContrast(average);
   };
 
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  }; 
+  // const toggleTheme = () => {
+  //   setTheme(theme === "dark" ? "light" : "dark");
+  // }; 
+  
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
     if (inputValue.trim() !== '') {
