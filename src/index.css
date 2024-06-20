@@ -268,19 +268,20 @@ button {
 .btn-contrast{
   color:#000000;
   background-color: transparent;
-  border: none;
   height: 25px;
-  width: 200px;
+  width: 150px;
   font-size: 17px;
-  margin-left: -36px;
-}
-
-.btn-contrast:hover{
-  color: #001d36;
+  margin-left: 5px;
   border-radius: 10px;
 }
 
+.btn-contrast:hover{
+  color: #ffffff;
+  background-color: #000000;
+  border-radius: 10pc;
+}
+
 .contrast-average{
-  margin-left: 8px;
+  margin: 8px;
 }
 

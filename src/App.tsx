@@ -69,7 +69,7 @@ export default function App() {
   return (
     <div className={`container ${theme === "dark" ? "dark-theme" : "light-theme"}`}>
       <header className="header">
-        <img className="img" src="public/logo1.png" alt="" />
+        <img className="img" src="/logo1.png" alt="" />
       </header>
 
       <div className="border"></div>
@@ -147,14 +147,14 @@ export default function App() {
       </footer>
 
       <a href="index2.html">
-        <button className="btn"> <img className="icon" src="public/About-Icon.png" alt="" /> </button>
+        <button className="btn"> <img className="icon" src="/About-Icon.png" alt="" /> </button>
       </a>
 
       <a href="https://github.com/diniss06" target="_blank">
-        <button className="btn"> <img className="icon-2" src="public/GitHub-Icon.png" alt="" /> </button>
+        <button className="btn"> <img className="icon-2" src="/GitHub-Icon.png" alt="" /> </button>
       </a>
 
-      <button className="btn" onClick={downloadPDF}> <img className="icon-3" src="public/PDF-Icon.png" alt="" /> </button>
+      <button className="btn" onClick={downloadPDF}> <img className="icon-3" src="/PDF-Icon.png" alt="" /> </button>
 
     </div>
   );
